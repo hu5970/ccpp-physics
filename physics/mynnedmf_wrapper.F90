@@ -209,7 +209,7 @@ SUBROUTINE mynnedmf_wrapper_run(        &
      &       imp_physics_thompson, imp_physics_gfdl,        &
      &       imp_physics_nssl,                              &
      &       spp_pbl
-      real, intent(in) ::                                   &
+      real(kind=kind_phys), intent(in) ::                   &
      &       bl_mynn_closure
 
 !TENDENCY DIAGNOSTICS
@@ -277,7 +277,7 @@ SUBROUTINE mynnedmf_wrapper_run(        &
       real(kind=kind_phys), dimension(:), intent(in) :: xmu
       real(kind=kind_phys), dimension(:,:), intent(in) :: htrsw, htrlw
       ! spp_wts_pbl only allocated if spp_pbl == 1
-      real(kind_phys), dimension(:,:),       intent(in) :: spp_wts_pbl
+      real(kind=kind_phys), dimension(:,:),       intent(in) :: spp_wts_pbl
 
      !LOCAL
       real(kind=kind_phys), dimension(im,levs) ::                        &
@@ -289,7 +289,7 @@ SUBROUTINE mynnedmf_wrapper_run(        &
       real(kind=kind_phys), allocatable :: old_ozone(:,:)
 
 !smoke/chem arrays
-      real(kind_phys), dimension(:), intent(inout) :: frp
+      real(kind=kind_phys), dimension(:), intent(inout) :: frp
       logical, intent(in) :: mix_chem, fire_turb, rrfs_smoke
       real(kind=kind_phys), dimension(:,:,:), intent(inout) :: chem3d
       real(kind=kind_phys), dimension(im)   :: emis_ant_no
@@ -1036,9 +1036,9 @@ SUBROUTINE mynnedmf_wrapper_run(        &
 
     implicit none
     integer,  intent(in)     :: kte
-    real, intent(in)         :: delt
-    real, dimension(kte), intent(in)     :: dp, exner
-    real, dimension(kte), intent(inout)  :: qv, qc, qi, th
+    real(kind=kind_phys), intent(in)     :: delt
+    real(kind=kind_phys), dimension(kte), intent(in)     :: dp, exner
+    real(kind=kind_phys), dimension(kte), intent(inout)  :: qv, qc, qi, th
     integer   k
     real ::  dqc2, dqi2, dqv2, sum, aa, dum
     real, parameter :: qvmin1= 1e-8,    & !min at k=1

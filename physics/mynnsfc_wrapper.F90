@@ -125,8 +125,9 @@ SUBROUTINE mynnsfc_wrapper_run(            &
       real(kind=kind_phys), parameter :: SVP3    = 29.65
       real(kind=kind_phys), parameter :: SVPT0   = 273.15
 
-  REAL, PARAMETER :: xlvcp=xlv/cp, xlscp=(xlv+xlf)/cp, ev=xlv, rd=r_d, &
-       &rk=cp/rd, svp11=svp1*1.e3, p608=ep_1, ep_3=1.-ep_2, g_inv=1./g
+      real(kind=kind_phys), parameter :: xlvcp=xlv/cp,               &
+       &xlscp=(xlv+xlf)/cp, ev=xlv, rd=r_d, rk=cp/rd,                &
+       &svp11=svp1*1.e3, p608=ep_1, ep_3=1.-ep_2, g_inv=1./g
 
 
   character(len=*), intent(out) :: errmsg
@@ -151,13 +152,9 @@ SUBROUTINE mynnsfc_wrapper_run(            &
       integer, dimension(:), intent(in) :: vegtype
       real(kind=kind_phys), dimension(:), intent(in)    ::  &
      &                    sigmaf,shdmax,z0pert,ztpert
-      real(kind_phys), dimension(:,:),    intent(in) :: spp_wts_sfc
-
-      real(kind=kind_phys), dimension(:,:),                 &
-     &      intent(in)  ::                  phii
-      real(kind=kind_phys), dimension(:,:),                 &
-     &      intent(in)  ::         exner, PRSL,             &
-     &                     u, v, t3d, qvsh, qc
+      real(kind=kind_phys), dimension(:,:),  intent(in) ::  &
+     & spp_wts_sfc, phii, exner, PRSL,                      &
+     & u, v, t3d, qvsh, qc
 
       logical, dimension(:), intent(in) :: wet, dry, icy
 
